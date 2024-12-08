@@ -1,8 +1,10 @@
 import ChartComponent from './ChartComponent'
 
 const BubbleChart = ({ data }) => {
+   // Chart data configuration for the bubble chart
     const bubbleChartData = {
-        datasets: [
+      labels: data.expenses, // Labels for the x-axis representing expenses.
+      datasets: [
             {
             label: 'Sales, Profits, Expenses',
             data: data.profits,
@@ -14,14 +16,18 @@ const BubbleChart = ({ data }) => {
         ],
     };
 
+       // Chart options configuration
 const bubbleChartOptions = {
     scales: {
+        // Configurations for the x-axis
         x: {
+           // Customizing x-axis ticks to prepend a dollar sign ('$') to each value.
           ticks: {
               callback: function(value, index, ticks) {
                   return '$' + value;
               }
           },
+           // Configuring the x-axis title
           title: {
               display: true,
               align: 'center',
@@ -40,6 +46,7 @@ const bubbleChartOptions = {
             },      
 
         },
+         // Configurations for the y-axis
         y: {
           min: Math.min(...data.sales),
           max: Math.max(...data.sales),
@@ -49,6 +56,7 @@ const bubbleChartOptions = {
                   return '$' + value;
               }
           },
+            // Configuring the y-axis title
           title: {
               display: true,
               align: 'center',

@@ -1,8 +1,9 @@
 import ChartComponent from "./ChartComponent";
 
 const BarChart = ({ data }) => {
+   // Chart data configuration
     const barChartData = {
-        labels: data.months,
+        labels: data.months, // Labels for the x-axis, representing the months
         datasets: [
             {
                 label: 'Monthly Sales',
@@ -14,14 +15,16 @@ const BarChart = ({ data }) => {
         ],
     };
 
+     // Chart configuration options
     const barChartOptions = {
         scales: {
             y: {
               ticks: {
                   callback: function(value, index, ticks) {
-                      return '$' + value;
+                      return '$' + value; // Format the y-axis labels as currency.
                   }
               },
+              // Configuring the y-axis title
               title: {
                   display: true,
                   align: 'center',
@@ -31,6 +34,7 @@ const BarChart = ({ data }) => {
                     size: 14,
                     weight: 'bold',
                   },
+                  // Padding around the title text.
                   padding: {
                     top: 10,
                     bottom: 5,
@@ -38,11 +42,12 @@ const BarChart = ({ data }) => {
                     right: 0,
                   },
                 },      
-              beginAtZero: true,
+              beginAtZero: true,  // Ensure the y-axis begins at zero, regardless of data values.
             },
           },
         };
 
+        // Rendering the ChartComponent with 'bar' type, configured data, and options.
     return <ChartComponent type="bar" data={barChartData} options={barChartOptions} />;
 };
 
